@@ -1,0 +1,146 @@
+﻿@page
+@model Razor_Rentals.Pages.Bookings.CreateModel
+
+
+@{
+    ViewData["Title"] = "Create Booking";
+}
+
+<h1>Create</h1>
+
+<h4>Booking</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Booking.BookingDate" />
+
+            <input type="hidden" asp-for="Booking.Car.CarId" />
+            <input type="hidden" asp-for="Booking.Customer.CustomerId" />
+
+            <input type="hidden" asp-for="Booking.Customer.Name" />
+            <input type="hidden" asp-for="Booking.Customer.Email" />
+            <input type="hidden" asp-for="Booking.Customer.Phone" />
+            <input type="hidden" asp-for="Booking.Customer.Password" />
+
+            <input type="hidden" asp-for="Booking.Car.Name" />
+            <input type="hidden" asp-for="Booking.Car.ImageURL" />
+            <input type="hidden" asp-for="Booking.Car.Description" />
+            <input type="hidden" asp-for="Booking.Car.CostPerDay" />
+
+
+
+
+
+            <div class="form-group">
+                <label asp-for="Booking.CarPickupDate" class="control-label"></label>
+                <input asp-for="Booking.CarPickupDate" class="form-control" id="CarPickupDate" value="@Model.Booking.CarPickupDate" onchange="calculateCost(); setMinReturnDate();" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="Booking.CarPickupDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.CarReturnDate" class="control-label"></label>
+                <input asp-for="Booking.CarReturnDate" class="form-control" id="CarReturnDate" value="@Model.Booking.CarReturnDate" onchange="validateReturnDate(); calculateCost();" disabled />
+                <span asp-validation-for="Booking.CarReturnDate" class="text-danger"></span>                                       
+            </div>
+
+
+
+
+
+
+            <input type="hidden" id="CostPerDay" value="@Model.Booking.Car.CostPerDay" />
+            <div class="form-group">
+                <label asp-for="Booking.Cost" class="control-label"></label>
+                <input asp-for="Booking.Cost" class="form-control" id="Cost" readonly type="number" step="0.01" />
+                <span asp-validation-for="Booking.Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="Primary-Button" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index" class="General-Button">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var pickupDateInput = document.getElementById('CarPickupDate');
+            var returnDateInput = document.getElementById('CarReturnDate');
+
+            returnDateInput.disabled = true;
+
+            pickupDateInput.addEventListener('input', function () {
+                returnDateInput.disabled = !pickupDateInput.value;
+            });
+        });
+    </script>
+  
+    <script>
+        function calculateCost() {
+            var pickupDate = new Date(document.getElementById('CarPickupDate').value);
+            var returnDate = new Date(document.getElementById('CarReturnDate').value);
+
+            var durationInMilliseconds = returnDate - pickupDate;
+            var durationInDays = Math.ceil(durationInMilliseconds / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
+
+            var costPerDay = parseFloat(document.getElementById('CostPerDay').value);
+            var totalCost = durationInDays * costPerDay;
+
+            // Ensure the total cost is not less than 0
+            if (totalCost < 0) {
+                totalCost = 0; // Set total cost to 0 if it's negative
+            }
+
+            document.getElementById('Cost').value = totalCost.toFixed(2); // Update the cost field
+        }
+    </script>
+ 
+    <script>
+        function setMinReturnDate() {
+            var pickupDate = new Date(document.getElementById("CarPickupDate").value);
+            var returnDateField = document.getElementById("CarReturnDate");
+            var returnDate = new Date(returnDateField.value);
+
+            // Set the minimum return date to one day after the pick-up date
+            var minReturnDate = new Date(pickupDate);
+            minReturnDate.setDate(pickupDate.getDate() + 1);
+
+            // Check if the return date is earlier than the minimum allowed return date
+            if (returnDate < minReturnDate) {
+                // Set the return date to the minimum allowed return date
+                returnDateField.value = minReturnDate.toISOString().split('T')[0];
+            }
+
+            // Set the min attribute of the return date input field
+            returnDateField.setAttribute("min", minReturnDate.toISOString().split('T')[0]);
+        }
+    </script>
+    <script>
+        function validateReturnDate() {
+            var pickupDate = new Date(document.getElementById("CarPickupDate").value);
+            var returnDate = new Date(document.getElementById("CarReturnDate").value);
+
+            // Check if the return date is earlier than the pick-up date
+            if (returnDate < pickupDate) {
+                alert("Return date cannot be earlier than pick-up date. Please select a valid return date.");
+                var tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                returnDateField.value = tomorrow.toISOString().split('T')[0]; // Set the return date field value
+            }
+        }
+    </script>
+
+   
+
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

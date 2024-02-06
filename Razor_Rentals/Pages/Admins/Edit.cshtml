@@ -1,0 +1,50 @@
+﻿@page
+@model Razor_Rentals.Pages.Admins.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Admin</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Admin.AdminId" />
+            <div class="form-group">
+                <label asp-for="Admin.Name" class="control-label"></label>
+                <input asp-for="Admin.Name" class="form-control" />
+                <span asp-validation-for="Admin.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Admin.Email" class="control-label"></label>
+                <input asp-for="Admin.Email" class="form-control" />
+                <span asp-validation-for="Admin.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Admin.Phone" class="control-label"></label>
+                <input asp-for="Admin.Phone" class="form-control" />
+                <span asp-validation-for="Admin.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Admin.Password" class="control-label"></label>
+                <input asp-for="Admin.Password" class="form-control" />
+                <span asp-validation-for="Admin.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="Primary-Button" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index" class="General-Button">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

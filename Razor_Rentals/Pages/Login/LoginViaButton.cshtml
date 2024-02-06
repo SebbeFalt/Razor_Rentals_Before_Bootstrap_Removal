@@ -1,0 +1,34 @@
+﻿@page
+@model Razor_Rentals.Pages.Login.LoginViaButtonModel
+@{
+    ViewData["Title"] = "Log in";
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<h1>Log in</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="inputEmail">Email address</label>
+        <input type="email" class="form-control" id="inputEmail" name="Email" placeholder="Enter your E-mail" required>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword" name="Password" placeholder="Password" required>
+    </div>
+    
+    <div class="form-group mt-2">
+        <button type="submit" class="Primary-Button">Login</button>
+        <a href="/Register/Register" class="General-Button">Don't have an account?</a>
+        <a href="/Login/LoginViaButtonAdmin" class="General-Button">Admin</a>
+    </div>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
