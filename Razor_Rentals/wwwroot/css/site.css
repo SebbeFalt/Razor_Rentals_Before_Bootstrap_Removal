@@ -18,7 +18,12 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: #EDF1F2;
+    margin-bottom: 60px;
+    overflow-x: hidden;
+}
+header {
+    background-color: #EDF1F2;
 }
 
 .Primary-Button {
@@ -71,6 +76,115 @@ body {
         color: #fff !important;
     }
 
-.center-content {
+.Centered-Horizontal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    flex-direction: row; /* Items stack horizontally by default */
 }
+
+.Centered-Vertical {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column; /* Items stack vertically */
+}
+
+.List-Item-1 {
+    display: flex;
+    list-style-type: none; /* Remove the bullet point */
+    padding-right: 10px;
+    margin-right: 10px;
+    text-decoration: none; /* Remove text decoration for links */
+}
+.Dark-Bold-Text {
+    color: #222; /* Dark color for text */
+    font-weight: 200; /* Bold font weight */
+    text-decoration: none; /* Remove underline for links */
+}
+
+    .Dark-Bold-Text:hover {
+        color: #2f95f7 !important; /* Light blue color on hover */
+        text-decoration: none; /* Remove underline on hover */
+    }
+
+    .Dark-Bold-Text:visited {
+        color: #222; /* Dark color for visited links */
+    }
+
+.Top-Right {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    z-index: 999;
+    margin: 10px;
+    padding-right: 30px;
+}
+
+.Top-Left {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    z-index: 999;
+    margin-left: 55px;
+    padding-left: 30px;
+}
+
+.Fluffy-Form {
+    border: none;
+    border-radius: 2px;
+    padding: 2px;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+    /* Style form inputs */
+    .Fluffy-Form input[type="text"],
+    .Fluffy-Form input[type="email"],
+    .Fluffy-Form input[type="password"],
+    .Fluffy-Form input[type="tel"],
+    .Fluffy-Form input[type="number"],
+    .Fluffy-Form input[type="decimal"],
+    .Fluffy-Form textarea {
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    /* Style form inputs */
+    .Fluffy-Form label {
+        display: block; /* Ensure each label appears on a new line */
+        margin-bottom: 8px; /* Add some spacing between labels */
+        font-size: 16px; /* Adjust font size */
+        color: #333; /* Set label text color */
+        font-weight: bold; /* Make labels bold */
+    }
+
+
+.Validation-Red {
+    color: red; 
+    font-weight: bold;
+    font-size: 0.9rem; 
+}
+.Validation-Green {
+    color: forestgreen;
+    
+}
+
+.TempData-Success {
+    color: forestgreen;
+    text-align: center;
+    font-weight: bold; /* Optional: Make the text bold */
+    margin-top: 20px; /* Optional: Add space above the message */
+}
+
+
+
+/* Orangeish: FCA72E
+   Whiteish: EDF1F2
+   Green/black: 0D1E21
+*/

@@ -9,23 +9,24 @@
         @TempData["ErrorMessage"]
     </div>
 }
-
-<h1>Log in</h1>
-<form method="post">
-    <div class="form-group">
-        <label for="inputEmail">Email address</label>
-        <input type="email" class="form-control" id="inputEmail" name="Email" placeholder="Enter your E-mail" required>
-    </div>
-    <div class="form-group">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" name="Password" placeholder="Password" required>
-    </div>
-    <input type="hidden" name="CarId" value="@Model.CarId" />
-    <div class="form-group mt-2">
-        <button type="submit" class="Primary-Button">Login</button>
-        <a href="/Register/Register" class="General-Button">Don't have an account?</a>
-    </div>
-</form>
+<div class="Centered-Vertical Fluffy-Form">
+    <h1>Log in</h1>
+    <form method="post">
+        <div>
+            <label for="inputEmail">Email address</label>
+            <input type="email" id="inputEmail" name="Email" placeholder="Enter your E-mail" required>
+        </div>
+        <div>
+            <label for="inputPassword">Password</label>
+            <input type="password" id="inputPassword" name="Password" placeholder="Password" required>
+        </div>
+        <input type="hidden" name="CarId" value="@Model.CarId" />
+        <div style="margin-top: 10px;">
+            <button type="submit" class="Primary-Button">Login</button>
+            <a href="/Register/Register" class="General-Button">Don't have an account?</a>
+        </div>
+    </form>
+</div>
 
 @section Scripts {
     @{

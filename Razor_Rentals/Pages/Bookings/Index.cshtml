@@ -15,11 +15,11 @@
 }
 
 
-<h1>Order History</h1>
+<h1 class="Centered-Horizontal">Order History</h1>
 @{
     if (string.IsNullOrEmpty(userEmail))
     {
-        <h3>To access your order history, please log in to your account.</h3>
+        <h3 class="Centered-Horizontal Validation-Red">To access your order history, please log in to your account.</h3>
     }
     else if (isAdmin == true)
     {

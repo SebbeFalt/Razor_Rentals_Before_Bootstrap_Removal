@@ -4,46 +4,46 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<div class="Centered-Vertical">
+    <h1>Edit Admin</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="Validation-Red"></div>
+                <input type="hidden" asp-for="Admin.AdminId" />
+                <div class="Fluffy-Form Centered-Vertical">
+                    <label asp-for="Admin.Name" class=""></label>
+                    <input asp-for="Admin.Name" class="" />
+                    <span asp-validation-for="Admin.Name" class="Validation-Red"></span>
+                </div>
+                <div class="Fluffy-Form Centered-Vertical">
+                    <label asp-for="Admin.Email" class=""></label>
+                    <input asp-for="Admin.Email" class="" />
+                    <span asp-validation-for="Admin.Email" class="Validation-Red"></span>
+                </div>
+                <div class="Fluffy-Form Centered-Vertical">
+                    <label asp-for="Admin.Phone" class=""></label>
+                    <input asp-for="Admin.Phone" class="" />
+                    <span asp-validation-for="Admin.Phone" class="Validation-Red"></span>
+                </div>
+                <div class="Fluffy-Form Centered-Vertical">
+                    <label asp-for="Admin.Password" class=""></label>
+                    <input asp-for="Admin.Password" class="" />
+                    <span asp-validation-for="Admin.Password" class="Validation-Red"></span>
+                </div>
+                <div class="">
+                    <input type="submit" value="Save" class="Primary-Button" />
+                </div>
+            </form>
+        </div>
+    </div>
 
-<h1>Edit</h1>
-
-<h4>Admin</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Admin.AdminId" />
-            <div class="form-group">
-                <label asp-for="Admin.Name" class="control-label"></label>
-                <input asp-for="Admin.Name" class="form-control" />
-                <span asp-validation-for="Admin.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Email" class="control-label"></label>
-                <input asp-for="Admin.Email" class="form-control" />
-                <span asp-validation-for="Admin.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Phone" class="control-label"></label>
-                <input asp-for="Admin.Phone" class="form-control" />
-                <span asp-validation-for="Admin.Phone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Admin.Password" class="control-label"></label>
-                <input asp-for="Admin.Password" class="form-control" />
-                <span asp-validation-for="Admin.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="Primary-Button" />
-            </div>
-        </form>
+    <div>
+        <a asp-page="./Index" class="General-Button" style="margin-top: 3px;">Back to List</a>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index" class="General-Button">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

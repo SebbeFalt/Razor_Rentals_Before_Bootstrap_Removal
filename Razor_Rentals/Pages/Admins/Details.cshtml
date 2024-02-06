@@ -5,43 +5,43 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+    
+<div class="Centered-Vertical">
+    <h1 style="margin-left: 30px;">Details</h1>
+    <div>
+        <dl class="Fluffy-Form">
+            <dt>
+                <label asp-for="Admin.Name" style="margin-left: 30px; margin-top: 5px;"></label>
+            </dt>
+            <dd>
+                <input asp-for="Admin.Name" class="" readonly />
+            </dd>
+            <dt>
+                <label asp-for="Admin.Email" style="margin-left: 30px; margin-top: 5px;"></label>
+            </dt>
+            <dd>
+                <input asp-for="Admin.Email" class="" readonly />
+            </dd>
+            <dt>
+                <label asp-for="Admin.Phone" style="margin-left: 30px; margin-top: 5px;"></label>
+            </dt>
+            <dd>
+                <input asp-for="Admin.Phone" class="" readonly />
+            </dd>
+            <dt>
+                <label asp-for="Admin.Password" style="margin-left: 30px; margin-top: 5px;"></label>
+            </dt>
+            <dd>
+                <input asp-for="Admin.Password" class="" readonly value="Model.Admin.Password" />
+            </dd>
+        </dl>
+    </div>
+</div>
 
-<div>
-    <h4>Admin</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Admin.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Admin.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Admin.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Admin.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Admin.Phone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Admin.Phone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Admin.Password)
-        </dt>
-        <dd class="col-sm-10" type="password">
-            @* @Html.DisplayFor(model => model.Admin.Password) *@
-            @foreach (var c in Model.Admin.Password)
-            {
-                <span>*</span>
-            }
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Admin.AdminId" class="Primary-Button">Edit</a>
-    <a asp-page="./Index" class="General-Button">Back to List</a>
-</div>
+
+    <div class="Centered-Horizontal">
+    <a asp-page="./Edit" asp-route-id="@Model.Admin.AdminId" class="Primary-Button" style="margin-left: 50px; margin-right: 10px;">Edit</a>
+    <a asp-page="./Index" class="General-Button" style="margin-right: 10px;">Back to List</a>
+    </div>
+
+
