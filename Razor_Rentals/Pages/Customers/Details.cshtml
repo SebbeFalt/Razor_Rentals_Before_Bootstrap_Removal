@@ -5,39 +5,39 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="Centered-Vertical">
+    <h1 style="margin-left: 30px;">Details</h1>
+    <div>
+        <dl class="Fluffy-Form">
+            <dt>
 
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Customer.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Customer.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer.Phone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Customer.Phone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer.Password)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Customer.Password)
-        </dd>
-    </dl>
+                <label asp-for="Customer.Name" style="margin-left: 30px; margin-top: 5px;"></label>
+            </dt>
+            <dd>
+                <input asp-for="Customer.Name" readonly />
+            </dd>
+            <dt>
+                <label asp-for="Customer.Email" style="margin-left: 30px; margin-top: 5px;"></label>
+            </dt>
+            <dd>
+                <input asp-for="Customer.Email" readonly />
+            </dd>
+            <dt>
+                <label asp-for="Customer.Phone" style="margin-left: 30px; margin-top: 5px;"></label>
+            </dt>
+            <dd>
+                <input asp-for="Customer.Phone" readonly />
+            </dd>
+            <dt>
+                <label asp-for="Customer.Password" style="margin-left: 30px; margin-top: 5px;"></label>
+            </dt>
+            <dd>
+                <input asp-for="Customer.Password" readonly value="Model.Customer.Password" />
+            </dd>
+        </dl>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Customer.CustomerId" class="Primary-Button">Edit</a>
-    <a asp-page="./Index" class="General-Button">Back to List</a>
+<div class="Centered-Horizontal">
+    <a asp-page="./Edit" asp-route-id="@Model.Customer.CustomerId" class="Primary-Button" style="margin-left: 50px; margin-right: 10px;">Edit</a>
+    <a asp-page="./Index" class="General-Button" style="margin-right: 10px;">Back to List</a>
 </div>

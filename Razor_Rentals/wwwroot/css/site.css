@@ -18,24 +18,28 @@ html {
 }
 
 body {
-    background-color: #EDF1F2;
+    /*background-color: #EDF1F2; white standard*/
+    /*background-color: #a2b0b4; grey standard*/
+    background-color: #B6BAB6;
     margin-bottom: 60px;
     overflow-x: hidden;
 }
 header {
-    background-color: #EDF1F2;
+    /*background-color: #EDF1F2 standard;*/
+    background-color: #A72D04;
 }
 
 .Primary-Button {
     display: inline-block;
     padding: 6px 12px;
-    background-color: #007bff; /* Blue color, you can change it */
+    /*background-color: #007bff; standard blue*/
+    background-color: #174678;
     color: #fff !important; /* White text color */
     text-decoration: none; /* Remove underline */
     border: none; /* Remove border */
     border-radius: 5px; /* Rounded corners */
     cursor: pointer; /* Show pointer cursor on hover */
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
     .Primary-Button:hover {
         background-color: #0056b3;
@@ -45,7 +49,8 @@ header {
 .Delete-Button {
     display: inline-block;
     padding: 6px 12px; /* First value = top and bottom, second value = left and right */
-    background-color: #dc3545; /* Red color, you can change it */
+    /*background-color: #dc3545; youtube red*/
+    background-color: #A72D04;
     color: #fff !important; /* White text color */
     text-decoration: none; /* Remove underline */
     border: none; /* Remove border */
@@ -62,7 +67,8 @@ header {
 .General-Button {
     display: inline-block;
     padding: 6px 12px;
-    background-color: #6c757d; /* Grey color, you can adjust it */
+    /*background-color: #6c757d;*/
+    background-color: #474444;
     color: #fff !important; /* White text color */
     text-decoration: none; /* Remove underline */
     border: none; /* Remove border */
@@ -99,9 +105,16 @@ header {
     margin-right: 10px;
     text-decoration: none; /* Remove text decoration for links */
 }
+/*.Dark-Bold-Text {
+    color: #222;*/ /* Dark color for text */
+    /*font-weight: 200;*/ /* Bold font weight */
+    /*text-decoration: none;*/ /* Remove underline for links */
+/*}*/
+
 .Dark-Bold-Text {
-    color: #222; /* Dark color for text */
-    font-weight: 200; /* Bold font weight */
+    color: #000; /* Black color for text */
+    font-weight: bold; /* Bold font weight */
+    font-size: 20px; /* Larger font size */
     text-decoration: none; /* Remove underline for links */
 }
 
@@ -142,6 +155,7 @@ header {
 
     /* Style form inputs */
     .Fluffy-Form input[type="text"],
+    .Fluffy-Form input[type="datetime-local"],
     .Fluffy-Form input[type="email"],
     .Fluffy-Form input[type="password"],
     .Fluffy-Form input[type="tel"],
@@ -166,9 +180,10 @@ header {
 
 
 .Validation-Red {
-    color: red; 
+    color: #A72D04;
     font-weight: bold;
-    font-size: 0.9rem; 
+    /*font-size: 0.9rem;*/
+    font-size: 2rem;
 }
 .Validation-Green {
     color: forestgreen;
@@ -178,9 +193,41 @@ header {
 .TempData-Success {
     color: forestgreen;
     text-align: center;
-    font-weight: bold; /* Optional: Make the text bold */
-    margin-top: 20px; /* Optional: Add space above the message */
+    font-weight: bold; /*  Make the text bold */
+    margin-top: 20px; /*  Add space above the message */
 }
+
+
+.Table-Style {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .Table-Style th, .Table-Style td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .Table-Style th {
+        background-color: #f2f2f2;
+    }
+
+    .Table-Style thead th {
+        /*background-color: #f2f2f2;*/
+        background-color: #dadada;
+        font-weight: bold;
+    }
+
+    .Table-Style tbody tr:nth-child(even) {
+        /*background-color: #f9f9f9;*/
+        background-color: #dadada;
+    }
+
+    .Table-Style tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+
 
 
 

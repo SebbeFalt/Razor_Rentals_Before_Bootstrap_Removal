@@ -6,9 +6,8 @@
 }
 <div class="Centered-Vertical">
     <h1>Edit Admin</h1>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
+    <div>
+        <div>
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="Validation-Red"></div>
                 <input type="hidden" asp-for="Admin.AdminId" />
@@ -29,10 +28,10 @@
                 </div>
                 <div class="Fluffy-Form Centered-Vertical">
                     <label asp-for="Admin.Password" class=""></label>
-                    <input asp-for="Admin.Password" class="" />
+                    <input asp-for="Admin.Password" style="margin-bottom: -15px;" />
                     <span asp-validation-for="Admin.Password" class="Validation-Red"></span>
                 </div>
-                <div class="">
+                <div>
                     <input type="submit" value="Save" class="Primary-Button" />
                 </div>
             </form>
@@ -40,7 +39,7 @@
     </div>
 
     <div>
-        <a asp-page="./Index" class="General-Button" style="margin-top: 3px;">Back to List</a>
+        <a asp-page="./Index" class="General-Button" style="margin-top: 3px; margin-bottom: 3px;">Back to List</a>
     </div>
 </div>
 

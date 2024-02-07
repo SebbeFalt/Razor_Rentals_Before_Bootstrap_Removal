@@ -13,146 +13,140 @@
 @{
     ViewData["Title"] = "Bookings";
 }
+<div class="Centered-Vertical">
+    <h1>Order History</h1>
+    @{
+        if (string.IsNullOrEmpty(userEmail))
+        {
+            <h3 class="Centered-Horizontal Validation-Red">To access your order history, please log in to your account.</h3>
+        }
 
-
-<h1 class="Centered-Horizontal">Order History</h1>
-@{
-    if (string.IsNullOrEmpty(userEmail))
-    {
-        <h3 class="Centered-Horizontal Validation-Red">To access your order history, please log in to your account.</h3>
-    }
-    else if (isAdmin == true)
-    {
-        <p>
-            <a asp-page="/Cars/Index" class="Primary-Button">Create New</a>
-        </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Car
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Booking[0].BookingDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Booking[0].CarPickupDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Booking[0].CarReturnDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Booking[0].Cost)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Booking)
-                {
+        else if (isAdmin == true)
+        {
+            <table class="Table-Style">
+                <thead>
                     <tr>
-                        <td>
-
-                            @Html.DisplayFor(modelItem => item.Customer.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Car.Name)
-                        </td>
-                        <td>
-                            @* @Html.DisplayFor(modelItem => item.BookingDate) *@
-                            @item.BookingDate.ToString("yyyy-MM-dd")
-                        </td>
-                        <td>
-                            @* @Html.DisplayFor(modelItem => item.CarPickupDate) *@
-                            @item.CarPickupDate.ToString("yyyy-MM-dd")
-                        </td>
-                        <td>
-                            @* @Html.DisplayFor(modelItem => item.CarReturnDate) *@
-                            @item.CarReturnDate.ToString("yyyy-MM-dd")
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cost)
-                        </td>
-                        <td>
-                            <a asp-page="./Delete" asp-route-id="@item.BookingId" class="Delete-Button">Delete</a>
-                        </td>
+                        <th>
+                            Customer
+                        </th>
+                        <th>
+                            Car
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Booking[0].BookingDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Booking[0].CarPickupDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Booking[0].CarReturnDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Booking[0].Cost)
+                        </th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Car
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Booking[0].BookingDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Booking[0].CarPickupDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Booking[0].CarReturnDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Booking[0].Cost)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Booking.Where(b => b.Customer.Email == userEmail))
-                {
-                    <tr>
-                        <td>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Booking)
+                    {
+                        <tr>
+                            <td>
 
-                            @Html.DisplayFor(modelItem => item.Customer.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Car.Name)
-                        </td>
-                        <td>
-                            @* @Html.DisplayFor(modelItem => item.BookingDate) *@
-                            @item.BookingDate.ToString("yyyy-MM-dd")
-                        </td>
-                        <td>
-                            @* @Html.DisplayFor(modelItem => item.CarPickupDate) *@
-                            @item.CarPickupDate.ToString("yyyy-MM-dd")
-                        </td>
-                        <td>
-                            @* @Html.DisplayFor(modelItem => item.CarReturnDate) *@
-                            @item.CarReturnDate.ToString("yyyy-MM-dd")
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cost)
-                        </td>
-                        <td>
-                            @if (item.CarPickupDate > DateTime.Today)
-                            {
+                                @Html.DisplayFor(modelItem => item.Customer.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Car.Name)
+                            </td>
+                            <td>
+                                @item.BookingDate.ToString("yyyy-MM-dd")
+                            </td>
+                            <td>
+                                @item.CarPickupDate.ToString("yyyy-MM-dd")
+                            </td>
+                            <td>
+                                @item.CarReturnDate.ToString("yyyy-MM-dd")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cost)
+                            </td>
+                            <td>
                                 <a asp-page="./Delete" asp-route-id="@item.BookingId" class="Delete-Button">Delete</a>
-                            }
-                            else
-                            {
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            
+        }
+        
+ 
+        else
+        {
+        <table class="Table-Style">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Car
+                    </th>
+                    <th>
+                            @Html.DisplayNameFor(model => model.Booking[0].BookingDate)
+                    </th>
+                    <th>
+                            @Html.DisplayNameFor(model => model.Booking[0].CarPickupDate)
+                    </th>
+                    <th>
+                            @Html.DisplayNameFor(model => model.Booking[0].CarReturnDate)
+                    </th>
+                    <th>
+                            @Html.DisplayNameFor(model => model.Booking[0].Cost)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (var item in Model.Booking.Where(b => b.Customer.Email == userEmail))
+                    {
+                    <tr>
+                        <td>
+
+                                @Html.DisplayFor(modelItem => item.Customer.Name)
+                        </td>
+                        <td>
+                                @Html.DisplayFor(modelItem => item.Car.Name)
+                        </td>
+                        <td>
+                                @item.BookingDate.ToString("yyyy-MM-dd")
+                        </td>
+                        <td>
+                                @item.CarPickupDate.ToString("yyyy-MM-dd")
+                        </td>
+                        <td>
+                                @item.CarReturnDate.ToString("yyyy-MM-dd")
+                        </td>
+                        <td>
+                                @Html.DisplayFor(modelItem => item.Cost)
+                        </td>
+                        <td>
+                                @if (item.CarPickupDate > DateTime.Today)
+                                {
+                                <a asp-page="./Delete" asp-route-id="@item.BookingId" class="Delete-Button">Delete</a>
+                                }
+                                else
+                                {
                                 <span>Cannot delete past or active bookings</span>
-                            }
+                                }
 
                         </td>
                     </tr>
-                }
+                    }
             </tbody>
         </table>
+        }
     }
-}
+    </div>
 
 
 

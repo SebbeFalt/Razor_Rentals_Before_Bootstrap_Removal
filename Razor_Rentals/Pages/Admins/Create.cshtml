@@ -5,8 +5,7 @@
     ViewData["Title"] = "Create";
 }
 <div class="Centered-Vertical">
-    <h1>Create New Admin</h1>
-    <hr />
+    <h1>Create Admin</h1>
     <div>
         <div>
             <form method="post">
@@ -31,15 +30,15 @@
                     <input asp-for="Admin.Password" />
                     <span asp-validation-for="Admin.Password" class="Validation-Red"></span>
                 </div>
-                <div class="">
-                    <input type="submit" value="Create" class="Primary-Button" />
+                <div>
+                    <input type="submit" value="Create" class="Primary-Button" style="margin-top: -15px;" />
                 </div>
             </form>
         </div>
     </div>
 
     <div>
-        <a asp-page="Index" class="General-Button" style="margin-top: 3px;">Back to List</a>
+        <a asp-page="Index" class="General-Button" style="margin-top: 3px; margin-bottom: 3px;">Back to List</a>
     </div>
 </div>
 

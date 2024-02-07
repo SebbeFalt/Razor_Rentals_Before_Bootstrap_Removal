@@ -3,12 +3,15 @@
 @{
     ViewData["Title"] = "Admin";
 }
-@if (TempData["ErrorMessage"] != null)
-{
-    <div class="alert alert-danger" role="alert">
-        @TempData["ErrorMessage"]
-    </div>
-}
+<div style="text-align: center;">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger Validation-Red" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+</div>
+
 <div class="Centered-Vertical Fluffy-Form">
     <h1>Log in for admins</h1>
     <form method="post">

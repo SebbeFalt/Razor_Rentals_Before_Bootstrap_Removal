@@ -23,19 +23,19 @@
 <body>
     <header>
         <div class="Top-Right">
-            <a href="#" id="loggedInUser" class="General-Button">@userEmail</a>
-            <a href="/Logout/Logout" id="logoutLink" style="display: none;" class="Primary-Button Top-Right">Logout</a>
+            <a href="#" id="loggedInUser" class="General-Button" style="margin-top: 32px;">@userEmail</a>
+            <a href="/Logout/Logout" id="logoutLink" style="display: none; margin-top: 50px; margin-right: 65px;" class="Primary-Button Top-Right">Logout</a>
         </div>
         <nav style="margin-bottom: 60px;">
             <div>
                 <div class="Top-Left">
                 <a asp-page="/Index">
-                    <img src="https://i.ibb.co/423QmnY/logo.png" alt="Friberg Rentals" style="width: auto; height: 64px;">
+                    <img src="https://i.ibb.co/423QmnY/logo.png" alt="Friberg Rentals" style="width: auto; height: 64px; margin-top: 25px;">
                 </a>
                 </div>
 
                 <div class="Centered-Horizontal">
-                    <ul class="List-Item-1">
+                    <ul class="List-Item-1" style="margin-top: 50px;">
                         <li class="List-Item-1">
                             <a class="Dark-Bold-Text" asp-page="/Index">Home</a>
                         </li>
@@ -59,7 +59,7 @@
                         @if (string.IsNullOrEmpty(userEmail))
                         {
                             <li class="List-Item-1 Top-Right">
-                                <a class="Primary-Button" asp-page="/Login/LoginViaButton">Log in</a>
+                                <a class="Primary-Button" style="margin-top: 32px;" asp-page="/Login/LoginViaButton">Log in</a>
                             </li>
                         }
 

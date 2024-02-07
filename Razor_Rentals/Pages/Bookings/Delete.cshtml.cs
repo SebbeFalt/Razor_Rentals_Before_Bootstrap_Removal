@@ -14,10 +14,12 @@ namespace Razor_Rentals.Pages.Bookings
     public class DeleteModel : PageModel
     {
         private readonly IGenericRepository<Booking> _bookingRepository;
+        private readonly IGenericRepository<Customer> _customerRepository;
 
-        public DeleteModel(IGenericRepository<Booking> bookingRepository)
+        public DeleteModel(IGenericRepository<Booking> bookingRepository, IGenericRepository<Customer> customerRepository)
         {
             _bookingRepository = bookingRepository;
+            _customerRepository = customerRepository;
         }
 
         [BindProperty]
@@ -29,8 +31,10 @@ namespace Razor_Rentals.Pages.Bookings
             {
                 return NotFound();
             }
-
-            var booking = _bookingRepository.Get(a => a.BookingId == id);
+            
+            //var booking = _bookingRepository.Get(b => b.BookingId == id);
+            var booking = _bookingRepository.GetAllIncluding(b => b.Customer)
+                                            .FirstOrDefault(b => b.BookingId == id);
 
             if (booking == null)
             {

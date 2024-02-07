@@ -19,85 +19,87 @@
     string LoggedInEmail = HttpContextAccessor.HttpContext.Session.GetString("LoggedInEmail");
 }
 
-<h1>Rent a Car</h1>
+<div class="Centered-Vertical">
+    <h1>Available Rental Cars</h1>
 
-@if (isAdmin == true)
-{
-    <p>
-        <a asp-page="Create" class="Primary-Button">Create New</a>
-    </p>
-}
+    @if (isAdmin == true)
+    {
+        <p style="margin-top: -10px;">
+            <a asp-page="Create" class="Primary-Button">Create New</a>
+        </p>
+    }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Car[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Car[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Car[0].Available)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Car[0].CostPerDay)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Car[0].ImageURL)
-                @*Image*@
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Car)
-        {
+    <table class="Table-Style">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Available)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CostPerDay)
-                </td>
-                <td>
-                    @* @Html.DisplayFor(modelItem => item.ImageURL) *@
-                    <img src="@item.ImageURL" alt="Car Image" style="max-width: 100px; max-height: 100px;" />
-                </td>
-                <td>
-                    @{
-                        if (isAdmin == true)
-                        {
-                            <a asp-page="./Delete" asp-route-id="@item.CarId" class="Delete-Button">Delete</a>
-                            <a asp-page="./Edit" asp-route-id="@item.CarId" class="General-Button">Edit</a>
-                        }
-                    }
-
-
-                    
-
-                    @if (string.IsNullOrEmpty(LoggedInEmail))
-                    {
-                        <a asp-page="/Login/Login" asp-route-carId="@item.CarId" class="Primary-Button">Rent Car</a>
-                    }
-                    else if(isAdmin == true)
-                    {
-                        
-                    }
-                    else
-                    {
-
-                        <a asp-page="/Bookings/Create" asp-route-carId="@item.CarId" asp-route-customerId="@ViewData["CustomerId"]" class="Primary-Button">Rent Car</a>
-                    }
-
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Car[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Car[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Car[0].Available)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Car[0].CostPerDay)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Car[0].ImageURL)
+                    @*Image*@
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Car)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Available)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CostPerDay)
+                    </td>
+                    <td>
+                        @* @Html.DisplayFor(modelItem => item.ImageURL) *@
+                        <img src="@item.ImageURL" alt="Car Image" style="max-width: 100px; max-height: 100px; border-radius: 4px;" />
+                    </td>
+                    <td>
+                        @{
+                            if (isAdmin == true)
+                            {
+                                <a asp-page="./Delete" asp-route-id="@item.CarId" class="Delete-Button">Delete</a>
+                                <a asp-page="./Edit" asp-route-id="@item.CarId" class="General-Button">Edit</a>
+                            }
+                        }
+
+
+
+
+                        @if (string.IsNullOrEmpty(LoggedInEmail))
+                        {
+                            <a asp-page="/Login/Login" asp-route-carId="@item.CarId" class="Primary-Button">Rent Car</a>
+                        }
+                        else if (isAdmin == true)
+                        {
+
+                        }
+                        else
+                        {
+
+                            <a asp-page="/Bookings/Create" asp-route-carId="@item.CarId" asp-route-customerId="@ViewData["CustomerId"]" class="Primary-Button">Rent Car</a>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

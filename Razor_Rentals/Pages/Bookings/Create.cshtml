@@ -5,15 +5,13 @@
 @{
     ViewData["Title"] = "Create Booking";
 }
+<div class="Centered-Vertical Fluffy-Form">
+<h1>Booking Finalization</h1>
 
-<h1>Create</h1>
-
-<h4>Booking</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div>
+    <div>
+            <form method="post" onsubmit="return confirmOrder()">
+            <div asp-validation-summary="ModelOnly" class="Validation-Red"></div>
             <input type="hidden" asp-for="Booking.BookingDate" />
 
             <input type="hidden" asp-for="Booking.Car.CarId" />
@@ -33,15 +31,15 @@
 
 
 
-            <div class="form-group">
-                <label asp-for="Booking.CarPickupDate" class="control-label"></label>
-                <input asp-for="Booking.CarPickupDate" class="form-control" id="CarPickupDate" value="@Model.Booking.CarPickupDate" onchange="calculateCost(); setMinReturnDate();" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
-                <span asp-validation-for="Booking.CarPickupDate" class="text-danger"></span>
+            <div>
+                <label asp-for="Booking.CarPickupDate" ></label>
+                <input asp-for="Booking.CarPickupDate" id="CarPickupDate" value="@Model.Booking.CarPickupDate" onchange="calculateCost(); setMinReturnDate();" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="Booking.CarPickupDate" class="Validation-Red"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Booking.CarReturnDate" class="control-label"></label>
-                <input asp-for="Booking.CarReturnDate" class="form-control" id="CarReturnDate" value="@Model.Booking.CarReturnDate" onchange="validateReturnDate(); calculateCost();" disabled />
-                <span asp-validation-for="Booking.CarReturnDate" class="text-danger"></span>                                       
+                <label asp-for="Booking.CarReturnDate" ></label>
+                <input asp-for="Booking.CarReturnDate" id="CarReturnDate" value="@Model.Booking.CarReturnDate" onchange="validateReturnDate(); calculateCost();" disabled />
+                <span asp-validation-for="Booking.CarReturnDate" class="Validation-Red"></span>                                       
             </div>
 
 
@@ -50,21 +48,23 @@
 
 
             <input type="hidden" id="CostPerDay" value="@Model.Booking.Car.CostPerDay" />
-            <div class="form-group">
-                <label asp-for="Booking.Cost" class="control-label"></label>
-                <input asp-for="Booking.Cost" class="form-control" id="Cost" readonly type="number" step="0.01" />
-                <span asp-validation-for="Booking.Cost" class="text-danger"></span>
+            <div>
+                <label asp-for="Booking.Cost" ></label>
+                <input asp-for="Booking.Cost" id="Cost" readonly type="number" step="0.01" />
+                <span asp-validation-for="Booking.Cost" class="Validation-Red"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="Primary-Button" />
+            <div>
+                    <input type="submit" value="Create" class="Primary-Button" style="margin-top: 15px;" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index" class="General-Button">Back to List</a>
+        <a asp-page="Index" class="General-Button" style="margin-top: 3px; margin-bottom: 3px;">Back to List</a>
 </div>
+</div>
+
 
 @section Scripts {
     <script>
@@ -132,6 +132,29 @@
                 tomorrow.setDate(tomorrow.getDate() + 1);
                 returnDateField.value = tomorrow.toISOString().split('T')[0]; // Set the return date field value
             }
+        }
+    </script>
+
+    <script>
+        function confirmOrder() {
+            var pickupDate = new Date(document.getElementById('CarPickupDate').value);
+            var returnDate = new Date(document.getElementById('CarReturnDate').value);
+            var cost = parseFloat(document.getElementById('Cost').value);
+
+            // Check if the pickup date and return date are the same
+            if (pickupDate.getTime() === returnDate.getTime()) {
+                alert("Pickup date and return date cannot be the same. Please select different dates.");
+                return false; // Prevent form submission
+            }
+
+            // Check if the cost is 0 SEK
+            if (cost === 0) {
+                alert("The cost cannot be 0 SEK. Please select valid dates.");
+                return false; // Prevent form submission
+            }
+
+            // Confirm the booking
+            return confirm("Are you sure you want to place this booking?");
         }
     </script>
 
